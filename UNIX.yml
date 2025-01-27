@@ -1,0 +1,83 @@
+# espanso match file
+
+# UNIX like system related snippets
+
+matches:
+  # CrowdSec rules
+  - trigger: ;csupd # CrowdSec Update
+    replace: "cscli hub update"
+
+  - trigger: ;scsupd
+    replace: "sudo {{csupd}}"
+    vars:
+      - name: csupd
+        type: match
+        params:
+          trigger: ;csupd
+
+  - trigger: ;dcsupd
+    replace: "doas {{csupd}}"
+    vars:
+      - name: csupd
+        type: match
+        params:
+          trigger: ;csupd
+
+  - trigger: ;csupg # CrowdSec Upgrade
+    replace: "cscli hub upgrade"
+
+  - trigger: ;scsupg
+    replace: "sudo {{csupg}}"
+    vars:
+      - name: csupg
+        type: match
+        params:
+          trigger: ;csupg
+
+  - trigger: ;dcsupg
+    replace: "doas {{csupg}}"
+    vars:
+      - name: csupg
+        type: match
+        params:
+          trigger: ;csupg
+
+  # MariaDB Database Upgrade
+  - trigger: ;mariaup
+    replace: "mariadb-upgrade -uroot -p"
+
+  - trigger: ;smariaup
+    replace: "sudo {{mariaup}}"
+    vars:
+      - name: mariaup
+        type: match
+        params:
+          trigger: ;mariaup
+
+  - trigger: ;dmariaup
+    replace: "doas {{mariaup}}"
+    vars:
+      - name: mariaup
+        type: match
+        params:
+          trigger: ;mariaup
+
+  # MySQL Database Upgrade
+  - trigger: ;mysqlup
+    replace: "mysql_upgrade -uroot -p"
+
+  - trigger: ;smysqlup
+    replace: "sudo {{mysqlup}}"
+    vars:
+      - name: mysqlup
+        type: match
+        params:
+          trigger: ;mysqlup
+
+  - trigger: ;dmysqlup
+    replace: "doas {{mysqlup}}"
+    vars:
+      - name: mysqlup
+        type: match
+        params:
+          trigger: ;mysqlup
