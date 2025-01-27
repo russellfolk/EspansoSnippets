@@ -1,0 +1,28 @@
+# espanso match file
+
+# punctuation type snippets
+
+matches:
+  # dashes
+  - trigger: ";--" # endash
+    replace: "–"
+
+  - trigger: ";_" # emdash
+    replace: "—"
+
+  # random stuff
+  - trigger: ";!?" # interrobang
+    replace: "‽"
+
+  - trigger: ";..." # elipsis
+    replace: "…"
+
+  # degrees
+  - trigger: ";deg" # degree symbol
+    replace: "°"
+
+  - trigger: ";fdeg" # degrees Fahrenheit
+    replace: "℉"
+
+  - trigger: ";cdeg" # degrees Celcius
+    replace: "℃"

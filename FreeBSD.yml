@@ -1,0 +1,246 @@
+# espanso match file
+
+# FreeBSD related snippets
+
+matches:
+  # fetch and install system updates
+  - trigger: ;fetch
+    replace: "freebsd-update fetch"
+
+  - trigger: ;sfetch
+    replace: "sudo {{fetch}}"
+    vars:
+      - name: fetch
+        type: match
+        params:
+          trigger: ;fetch
+
+  - trigger: ;dfetch
+    replace: "doas {{fetch}}"
+    vars:
+      - name: fetch
+        type: match
+        params:
+          trigger: ;fetch
+
+  - trigger: ;inst
+    replace: "freebsd-update install"
+
+  - trigger: ;sinst
+    replace: "sudo {{inst}}"
+    vars:
+      - name: inst
+        type: match
+        params:
+          trigger: ;inst
+
+  - trigger: ;dinst
+    replace: "doas {{inst}}"
+    vars:
+      - name: inst
+        type: match
+        params:
+          trigger: ;inst
+
+  # check for and update application packages
+  - trigger: ;pkgup
+    replace: "pkg upgrade"
+
+  - trigger: ;spkgup
+    replace: "sudo {{pkgup}}"
+    vars:
+      - name: pkgup
+        type: match
+        params:
+          trigger: ;pkgup
+
+  - trigger: ;dpkgup
+    replace: "doas {{pkgup}}"
+    vars:
+      - name: pkgup
+        type: match
+        params:
+          trigger: ;pkgup
+
+  # System Information
+  - trigger: ;fver
+    replace: "freebsd-version -ku"
+
+  # CrowdSec rules
+  - trigger: ;csupd # CrowdSec Update
+    replace: "cscli hub update"
+
+  - trigger: ;scsupd
+    replace: "sudo {{csupd}}"
+    vars:
+      - name: csupd
+        type: match
+        params:
+          trigger: ;csupd
+
+  - trigger: ;dcsupd
+    replace: "doas {{csupd}}"
+    vars:
+      - name: csupd
+        type: match
+        params:
+          trigger: ;csupd
+
+  - trigger: ;csupg # CrowdSec Upgrade
+    replace: "cscli hub upgrade"
+
+  - trigger: ;scsupg
+    replace: "sudo {{csupg}}"
+    vars:
+      - name: csupg
+        type: match
+        params:
+          trigger: ;csupg
+
+  - trigger: ;dcsupg
+    replace: "doas {{csupg}}"
+    vars:
+      - name: csupg
+        type: match
+        params:
+          trigger: ;csupg
+
+  # MariaDB Database Upgrade
+  - trigger: ;mariaup
+    replace: "mariadb-upgrade -uroot -p"
+
+  - trigger: ;smariaup
+    replace: "sudo {{mariaup}}"
+    vars:
+      - name: mariaup
+        type: match
+        params:
+          trigger: ;mariaup
+
+  - trigger: ;dmariaup
+    replace: "doas {{mariaup}}"
+    vars:
+      - name: mariaup
+        type: match
+        params:
+          trigger: ;mariaup
+
+  # MySQL Database Upgrade
+  - trigger: ;mysqlup
+    replace: "mysql_upgrade -uroot -p"
+
+  - trigger: ;smysqlup
+    replace: "sudo {{mysqlup}}"
+    vars:
+      - name: mysqlup
+        type: match
+        params:
+          trigger: ;mysqlup
+
+  - trigger: ;dmysqlup
+    replace: "doas {{mysqlup}}"
+    vars:
+      - name: mysqlup
+        type: match
+        params:
+          trigger: ;mysqlup
+
+  # Symbolic link to quickly link my webserver config files
+  - trigger: ;lnweb
+    replace: "ln -s /usr/home/russell/all-in-one_webserver_configs/"
+
+  - trigger: ;slnweb
+    replace: "sudo {{lnweb}}"
+    vars:
+      - name: lnweb
+        type: match
+        params:
+          trigger: ;lnweb
+
+  - trigger: ;dlnweb
+    replace: "doas {{lnweb}}"
+    vars:
+      - name: lnweb
+        type: match
+        params:
+          trigger: ;lnweb
+
+  # PF (Packet Filter) Firewall Rules
+  - trigger: ;editpf
+    replace: "vim /etc/pf.conf"
+
+  - trigger: ;seditpf
+    replace: "sudo {{editpf}}"
+    vars:
+      - name: editpf
+        type: match
+        params:
+          trigger: ;editpf
+
+  - trigger: ;deditpf
+    replace: "doas {{editpf}}"
+    vars:
+      - name: editpf
+        type: match
+        params:
+          trigger: ;editpf
+
+  - trigger: ;reloadpf
+    replace: "pfctl -f /etc/pf.conf"
+
+  - trigger: ;sreloadpf
+    replace: "sudo {{reloadpf}}"
+    vars:
+      - name: reloadpf
+        type: match
+        params:
+          trigger: ;reloadpf
+
+  - trigger: ;dreloadpf
+    replace: "doas {{reloadpf}}"
+    vars:
+      - name: reloadpf
+        type: match
+        params:
+          trigger: ;reloadpf
+
+  # FreeBSD Service Interactions
+  # service status
+  - trigger: ;fsrst
+    replace: "service $|$ status"
+
+  - trigger: ;sfsrst
+    replace: "sudo {{fsrst}}"
+    vars:
+      - name: fsrst
+        type: match
+        params:
+          trigger: ;fsrst
+
+  - trigger: ;dfsrst
+    replace: "doas {{fsrst}}"
+    vars:
+      - name: fsrst
+        type: match
+        params:
+          trigger: ;fsrst
+
+  # service restart
+  - trigger: ;fsrr
+    replace: "service $|$ restart"
+
+  - trigger: ;sfsrr
+    replace: "sudo {{fsrr}}"
+    vars:
+      - name: fsrr
+        type: match
+        params:
+          trigger: ;fsrr
+
+  - trigger: ;dfsrr
+    replace: "doas {{fsrr}}"
+    vars:
+      - name: fsrr
+        type: match
+        params:
+          trigger: ;fsrr
