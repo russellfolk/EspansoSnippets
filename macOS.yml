@@ -1,0 +1,52 @@
+# espanso match file
+
+# macOS system related snippets
+
+matches:
+  # Homebrew snippets
+  # basic Homebrew update
+  - trigger: ";brewup"
+    replace: "brew update && brew upgrade && brew cu && brew cleanup && brew doctor"
+
+  # update OhMyZsh and Rust language with brewup
+  - trigger: ";fbrewup"
+    replace: "{{brewup}} && omz update && rustup update"
+    vars:
+      - name: brewup
+        type: match
+        params:
+          trigger: ;brewup
+
+  # full, forced Homebrew update
+  - trigger: ";subrup"
+    replace: "brew update && brew upgrade && brew cu -afy && brew cleanup && brew doctor"
+
+  # update OhMyZsh and Rust language with subrup
+  - trigger: ";fsubrup"
+    replace: "{{subrup}}  && omz update && rustup update"
+    vars:
+      - name: subrup
+        type: match
+        params:
+          trigger: ;subrup
+
+  # brew install
+  - trigger: ";brewin"
+    replace: "brew install"
+
+  # brew uninstall
+  - trigger: ";brewun"
+    replace: "brew uninstall"
+
+  # brew cask install
+  - trigger: ";brewcin"
+    replace: "brew install --cask"
+
+  # brew cask uninstall
+  - trigger: ";brewcun"
+    replace: "brew uninstall --cask"
+
+  # brew search
+  - trigger: ";brews"
+    replace: "brew search"
+
